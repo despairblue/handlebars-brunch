@@ -12,9 +12,7 @@ module.exports = class HandlebarsCompiler
 
   compile: (data, path, callback) ->
     try
-      content = handlebars.precompile data
-      result = "Handlebars = (typeof require === 'function') ? require('Handlebars') : Handlebars;" +
-        "module.exports = Handlebars.template(#{content});"
+      result = "Handlebars.template(#{handlebars.precompile data});"
     catch err
       error = err
     finally
